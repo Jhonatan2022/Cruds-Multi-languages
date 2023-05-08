@@ -38,6 +38,7 @@ def index():
 
     # Retornamos un mensaje de bienvenida
     return 'Hello World!'
+#---------------------------------ROUTES---------------------------------#
 
 
 

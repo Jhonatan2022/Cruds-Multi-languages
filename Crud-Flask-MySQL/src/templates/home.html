@@ -1,0 +1,111 @@
+<html lang="en">
+<head>
+    <title>Home</title>
+
+    <!-- Usamos la libreria de bootstrap para el estilo de la pagina -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-KK94CHFLLe+nY2dmCWGMq91rCGa5gtU4mk92HdvYe+M/SXH301p5ILy+dN9+nJOZ" crossorigin="anonymous">
+
+    <!-- Usamos la libreria de bootstrap para el estilo de la pagina -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha3/dist/js/bootstrap.bundle.min.js"
+        integrity="sha384-ENjdO4Dr2bkBIFxQpeoTz1HIcje39Wm4jDKdf19U8gI4ddQ3GYNS7NTKfAdVQSZe"
+        crossorigin="anonymous"></script>
+
+    <!-- Usamos la libreria de fontawesome para el icono de sol y luna -->
+    <script src="https://kit.fontawesome.com/f21459c29e.js" crossorigin="anonymous"></script>
+</head>
+
+<!--Usamo la propiedad data-bs-theme inicialice en modo oscuro (dark) o claro (light)-->
+<body data-bs-theme="dark">
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <button onclick="alternarTema()" class="btn rounded-fill">
+                <i id="modo" class="fas fa-sun"></i>
+            </button>
+        </div>
+    </nav>
+    <h1 class="text-center mt-5 nb-5 text-uppercase">Registra un usuario</h1>
+    <div class="continer p-5">
+        <div class="card shadow-lg">
+            <div class="card-body">
+                <form action="/save" method="POST">
+                    <div class="row mb-3">
+                        <div class="col ">
+                            <label>Username</label>
+                            <input type="text" name="user_name" class="form-control mb-3" placeholder="Username">
+                        </div>
+                        <div class="col">
+                            <label>Name</label>
+                            <input type="text" name="name" class="form-control mb-3" placeholder="Name">
+                        </div>
+                        <div class="col">
+                            <label>Email</label>
+                            <input type="email" name="email" class="form-control mb-3" placeholder="email">
+                        </div>
+                        <div class="col">
+                            <label>Password</label>
+                            <input type="password" name="pasword" class="form-control mb-3" placeholder="Password">
+                        </div>
+                        <div class="col">
+                            <button type="submit" class="btn btn-success mt-4 mb-3">Save Data</button>
+                        </div>
+                    </div>
+                </form>
+                <!--Creamos la tabla-->
+                <table class="table table-bordered">
+                    <thead class="m-2">
+                        <th scope="col">#</th>
+                        <th scope="col">Username</th>
+                        <th scope="col">Name</th>
+                        <th scope="col">Email</th>
+                        <th scope="col">Password</th>
+                        <th scope="col">Edit</th>
+                        <th scope="col">Delete</th>
+                    </thead>
+                    <tbody class="">
+                        {% for d in data %}
+                        <tr>
+                            <td> {{ d.id_user }} </td>
+                            <td> {{ d.user_name }} </td>
+                            <td> {{ d.name }} </td>
+                            <td> {{ d.email }} </td>
+                            <td> {{ d.pasword }} </td>
+                            <td> <button class="btn btn-info btn-sm" id="btn-edit{{ d.id_user }}"
+                                    data-bs-toggle="modal" data-bs-target="#modal{{ d.id_user }}">Edit</button></td>
+                            <td> <a href="{{ url_for('deleteData', id=d.id_user) }}"
+                                    class="btn btn-danger btn-sm">Dlete</a></td>
+                        </tr>
+                        <div class="modal fade" id="modal{{d.id_user}}" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+                            <div class="modal-dialog">
+                              <div class="modal-content">
+                                <div class="modal-header">
+                                  <h1 class="modal-title fs-5" id="exampleModalLabel">{{d.email}}</h1>
+                                  <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                                </div>
+                                <div class="modal-body">
+                                    <form action="/edit/{{d.id_user}}" method="post">
+                                        <label>Username</label>
+                                        <input type="text" class="form-control mb-3" name="user_name" value="{{d.user_name}}">
+                                        <label>Name</label>
+                                        <input type="text" class="form-control mb-3" name="name" value="{{d.name}}">
+                                        <label>Email</label>
+                                        <input type="text" class="form-control mb-3" name="email" value="{{d.email}}">
+                                        <label>Password</label>
+                                        <input type="text" class="form-control mb-3" name="pasword" value="{{d.pasword}}">
+                                </div>
+                                <div class="modal-footer">
+                                  <button type="submit" class="btn btn-primary">Save changes</button>
+                                </div>
+                                </form>
+                              </div>
+                            </div>
+                          </div>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+    <script src="static/js/index.js"></script>
+</body>
+</html>
