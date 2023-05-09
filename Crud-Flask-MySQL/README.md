@@ -38,3 +38,7 @@ cd Crud-Flask-MySQL
 # Corremos el app
 python src\app.py
 ```
+```sh
+# Accedemos a la ruta donde se encuentra el proyecto
+http://127.0.0.1:4000/
+```
