@@ -23,6 +23,10 @@ git clone https://github.com/Jhonatan2022/Cruds-Multi-languages.git
 pip install virtualenv
 ```
 ```sh
+# Damos los permisos necesarios por powershell
+Set-ExecutionPolicy RemoteSigned
+```
+```sh
 # Creamos un entorno virtual
 virtualenv env
 ```
