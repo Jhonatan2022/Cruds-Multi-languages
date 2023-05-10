@@ -1,5 +1,11 @@
 # Importamos la libreria Flask para crear la API
-from flask import Flask
+from flask import (
+    
+    # Flask: Es la clase que usaremos para crear la API
+    Flask,
+                   
+    # Importamos request para obtener los datos de la petición
+    request)
 
 # Importamos pymongo para conectarnos a la base de datos de MongoDB
 from flask_pymongo import PyMongo
@@ -23,7 +29,7 @@ mongo = PyMongo(app)
 
 
 # Definimos la conección de usuarios y roles
-dbs = mongo.db.users
+db = mongo.db.users
 #---------------------------------CONFIGURATIONS---------------------------------#
 
 
@@ -31,13 +37,57 @@ dbs = mongo.db.users
 
 #---------------------------------ROUTES---------------------------------#
 # Definimos la ruta principal de la aplicación
-@app.route('/')
-
+@app.route('/users', methods=['POST'])
 # Definimos la función que se ejecutará cuando se entre a la ruta principal
-def index():
+def createUser():
 
     # Retornamos un mensaje de bienvenida
-    return 'Hello World!'
+    return ''
+
+
+
+
+# Definimos la ruta para crear un nuevo usuario por el metodo GET
+@app.route('/users', methods=['GET'])
+# Definimos la función que se ejecutará cuando se entre a la ruta principal
+def getUsers():
+
+    # Retornamos un mensaje de bienvenida
+    return ''
+
+
+
+
+# Definimos la ruta para obtener un solo usuario
+@app.route('/users/<id>', methods=['GET'])
+# Definimos la función que se ejecutará cuando se entre a la ruta principal
+def getUser(id):
+
+    # Retornamos un mensaje de bienvenida
+    return ''
+
+
+
+
+# Definimos la ruta para eliminar un usuario
+@app.route('/users/<id>', methods=['DELETE'])
+# Definimos la función que se ejecutará cuando se entre a la ruta principal
+def deleteUser(id):
+
+    # Retornamos un mensaje de bienvenida
+    return ''
+
+
+
+
+# Definimos la ruta para actualizar un usuario
+# El metodo PUT es para actualizar un recurso
+@app.route('/users/<id>', methods=['PUT'])
+# Definimos la función que se ejecutará cuando se entre a la ruta principal
+def updateUser(id):
+
+    # Retornamos un mensaje de bienvenida
+    return ''
 #---------------------------------ROUTES---------------------------------#
 
 
