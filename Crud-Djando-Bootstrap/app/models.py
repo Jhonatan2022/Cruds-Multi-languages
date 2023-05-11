@@ -24,7 +24,7 @@ class Programer(models.Model):
 
     # Creamos el campo de puntaje de tipo entero
     # PositiveSmallIntegerField: Solo permite valores positivos de hasta 32767 (2 bytes)
-    score = models.PositiveSmallIntegerField
+    score = models.PositiveSmallIntegerField()
 
 
     # Usamos class meta para darle un nombre a la tabla
@@ -32,3 +32,11 @@ class Programer(models.Model):
 
         # Le damos el nombre a la tabla
         db_table = 'programer'
+
+
+
+    # Creamos el metodo __str__ para poder mostrar los datos de la tabla
+    def __str__(self):
+            
+            # Retornamos el nombre
+            return self.name
