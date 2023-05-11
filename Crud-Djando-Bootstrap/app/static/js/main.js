@@ -1,4 +1,34 @@
 //------------------------------------REQUEST API------------------------------------
+// Creamos una variable para saber si esta iniciada la tabla
+let dataTable;
+
+// Creamos un variable para saver si esta inicializada la tabla y dejamos predeterminado false
+let dataTableIsInitialized = false;
+
+// Creamos una constante asncrona para saber si esta inicializada la tabla
+const initDataTable = async () => {
+
+    // Si la tabla esta inicializada (True) 
+    if (dataTableIsInitialized){
+
+        // Destruimos la tabla
+        // Destroy sirve para destruir la tabla y volver a crearla
+        dataTable.destroy();
+    } 
+
+    // Llamamos la funcion ListProgramers cuando se cargue la pagina
+    await listProgramers();
+
+    // Usamos jQuery para seleccionar la tabla y le pasamos el id de la tabla
+    // Usamos DataTable para inicializar la tabla y le pasamos un objeto con las opciones
+    dataTable = $('#datatable-programers').DataTable({
+    });
+
+    // Cambiamos el valor de la variable a true
+    dataTableIsInitialized = true;
+};
+
+
 // Creamos una constante asincrona con funcion flecha
 const listProgramers = async () => {
 
@@ -22,11 +52,14 @@ const listProgramers = async () => {
         data.programers.forEach((programer, index) => {
 
             // Usamos += para agregar los datos al elemento del DOM
+            // Indicamos index +1 para que el id no comience en 0
             content += `
                 <tr>
-                    <td>${index}</td>
-                    <td>${programer.name}</td>
-                    <td>${programer.country}</td>
+                    <td class="text-center">${index + 1}</td>
+                    <td class="text-center">${programer.name}</td>
+                    <td class="text-center">${programer.country}</td>
+                    <td class="text-center">${programer.birthday}</td>
+                    <td class="text-center">${programer.score}</td>
                     <td>
                 </tr>
                 `;
@@ -37,10 +70,10 @@ const listProgramers = async () => {
 
 
     // Usamos catch para capturar los errores y le pasamos el error
-    }catch (ex) {
+    }catch (error) {
 
         // Usamos console.log para mostrar el error en la consola
-        alert(ex);
+        alert(error);
         }
 };
 
@@ -49,8 +82,8 @@ const listProgramers = async () => {
 // AddEventListener es un metodo que nos permite agregar un evento de escucha a un elemento del DOM
 window.addEventListener("load", async () => {
 
-    // Llamamos la funcion ListProgramers cuando se cargue la pagina
-    await listProgramers();
+    // Llamamos la funcion initDataTable cuando se cargue la pagina
+    await initDataTable();
 
 });
 //------------------------------------REQUEST API------------------------------------
