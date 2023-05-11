@@ -37,6 +37,9 @@ app.config['MONGO_URI'] = 'mongodb://localhost/microcrud'
 # Creamos la instancia de PyMongo y le pasamos la instancia de Flask
 mongo = PyMongo(app)
 
+# Pasamos el app a CORS para permitir el acceso a la API desde cualquier origen como react
+CORS(app)
+
 
 # Definimos la conección de usuarios y roles
 db = mongo.db.users
