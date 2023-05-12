@@ -1,5 +1,6 @@
 ## Crud Con Django, DataTables y Bootstrap
 
+![image](https://github.com/Jhonatan2022/Cruds-Multi-languages/assets/101368711/2f5f5c25-e405-48de-9360-acf126c03ba2)
 
 ## Requisitos
 
