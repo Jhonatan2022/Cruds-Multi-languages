@@ -16,6 +16,10 @@ urlpatterns = [
     path('', views.index, name='index'),
 
 
+    # Creamos la vista de list_programers para consumir los datos en el front
+    path('list_programers/', views.list_programers, name='list_programers'),
+
+
     # # Ruta para la vista de agregar programador
     # path('add/', views.add, name='add'),
 

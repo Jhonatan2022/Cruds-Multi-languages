@@ -32,5 +32,5 @@ urlpatterns = [
 
 
     # Incluimos las rutas de la aplicacion
-    path('aap/', include('app.urls')),
+    path('app/', include('app.urls')),
 ]
