@@ -1,11 +1,9 @@
-## Crud Con Django, DataTables y Bootstrap
+## Gráficos Dinámicos con Django
 
-![image](https://github.com/Jhonatan2022/Cruds-Multi-languages/assets/101368711/2f5f5c25-e405-48de-9360-acf126c03ba2)
 
 ## Requisitos
 
 * python instalado: [python](https://www.python.org/downloads/)
-* DB Browser for SQLite instalado: [DB Browser for SQLite](https://sqlitebrowser.org/dl/)
 
 
 ## Pasos a seguir
@@ -14,8 +12,9 @@
 git clone https://github.com/Jhonatan2022/Cruds-Multi-languages.git
 ```
 ```sh
+```sh
 # Accedemos al la carpeta del proyecto
-cd .\Crud-Djando-Bootstrap\
+cd .\Graficos-Dinamicos-Django\
 ```
 ```sh
 # Instalamos virtualenv si no lo tenemos 
