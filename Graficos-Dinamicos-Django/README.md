@@ -1,5 +1,7 @@
 ## Gráficos Dinámicos con Django
 
+![image](https://github.com/Jhonatan2022/Cruds-Multi-languages/assets/101368711/eb85a832-0bc2-473a-830a-c3917b75b8b7)
+
 
 ## Requisitos
 
