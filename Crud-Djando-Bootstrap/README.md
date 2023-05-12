@@ -13,6 +13,10 @@
 git clone https://github.com/Jhonatan2022/Cruds-Multi-languages.git
 ```
 ```sh
+# Accedemos al la carpeta del proyecto
+cd .\Crud-Djando-Bootstrap\
+```
+```sh
 # Instalamos virtualenv si no lo tenemos 
 pip install virtualenv
 ```
@@ -27,10 +31,6 @@ virtualenv env
 ```sh
 # Activamos el entorno virtual
 env\Scripts\activate
-```
-```sh
-# Accedemos al la carpeta del proyecto
-cd .\Crud-Djando-Bootstrap\
 ```
 ```sh
 # Instalamos los requerimientos
