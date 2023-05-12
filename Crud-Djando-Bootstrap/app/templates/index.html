@@ -26,7 +26,7 @@
         </div>
     </nav>
 
-    <div class="container">
+    <div class="container mt-4">
         <div class="row">
             <div class="col-sm-12 col-md-12 col-lg-12 col-xl-12">
                 <div class="table-responsive">
@@ -38,11 +38,13 @@
                         </caption>
                         <thead>
                             <tr>
-                                <th class="text-center"># ID</th>
+                                <th class="text-center">#Id</th>
                                 <th class="text-center">Name</th>
                                 <th class="text-center">Country</th>
                                 <th class="text-center">Birthday</th>
                                 <th class="text-center">Score</th>
+                                <th class="text-center text-success">Hide ?</th>
+                                <th class="text-center">Options</th>
                             </tr>
                         </thead>
                         <tbody id="tableBody_programers">
@@ -65,5 +67,6 @@
 
      <!--Custom JS-->
     <script src="{% static 'js/main.js' %}"></script>
+    <script src="{% static 'js/tables.js' %}"></script>
 </body>
 </html>
