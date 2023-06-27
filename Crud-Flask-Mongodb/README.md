@@ -48,13 +48,8 @@ pip install -r requirements.sh
 ```
 
 ```sh
-# Creamos las migraciones
-python manage.py migrate
-```
-
-```sh
-# Corremos el app
-python manage.py runserver
+# Corremos el proyecto
+python .\app\app.py
 ```
 
 ```sh
