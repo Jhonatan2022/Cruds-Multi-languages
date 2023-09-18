@@ -58,3 +58,10 @@ python manage.py runserver
 # Accedemos a la ruta donde se encuentra el proyecto
 http://127.0.0.1:8000/
 ```
+
+## Webs de ayuda
+* [Bootstrap](https://getbootstrap.com/)
+* [Django](https://www.djangoproject.com/)
+* [Datatables](https://datatables.net/)
+* [JsonFormatter](https://jsonformatter.curiousconcept.com/)
+* [DB Browser for SQLite](https://sqlitebrowser.org/)
