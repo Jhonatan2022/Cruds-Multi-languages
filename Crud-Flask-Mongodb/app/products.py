@@ -4,10 +4,5 @@ class Product:
         self.price = price
         self.quantity = quantity
 
-
     def toCollection(self):
-        return {
-            'name': self.name,
-            'price': self.price,
-            'quantity': self.quantity
-        }
+        return {"name": self.name, "price": self.price, "quantity": self.quantity}
