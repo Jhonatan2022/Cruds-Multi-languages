@@ -1,32 +1,27 @@
 # Importamos la libreria Flask para crear la API
 from flask import (
-
     # Flask: nos permite crear la aplicación
     Flask,
-
-     # render_template: nos permite renderizar los archivos html
-    render_template, 
-    
+    # render_template: nos permite renderizar los archivos html
+    render_template,
     # request: nos permite obtener los datos del formulario
-    request, 
-    
+    request,
     # redirect: nos permite redireccionar a otra ruta
-    redirect, 
-    
+    redirect,
     # url_for: nos permite obtener la ruta de una función
-    url_for)
+    url_for,
+)
 
 # Importamos os para poder acceder a las variables de entorno
 import os
 
 # Importamos el archivo database.py para poder conectarnos a la base de datos y le asignamos el alias db
 from auth import database as db
-#---------------------------------IMPORT LIBRARIES---------------------------------#
+
+# ---------------------------------IMPORT LIBRARIES---------------------------------#
 
 
-
-
-#---------------------------------CONFIGURATIONS---------------------------------#
+# ---------------------------------CONFIGURATIONS---------------------------------#
 # Creamos la instancia para poder acceder los archivos de la carpeta templates
 # dirname: nombre del directorio actual (src)
 # abspath: ruta absoluta del directorio actual (Crud-Flask-MySQL\src)
@@ -35,32 +30,28 @@ template_dir = os.path.dirname(os.path.abspath(os.path.dirname(__file__)))
 
 
 # Unimos la ruta del directorio padre con la carpeta templates (Crud-Flask-MySQL\templates)
-# join: une muchas rutas en una sola 
-template_dir = os.path.join(template_dir, 'src', 'templates')
+# join: une muchas rutas en una sola
+template_dir = os.path.join(template_dir, "src", "templates")
 
 
 # Creamos la instancia de Flask y le pasamos el nombre de la aplicacion
 # template_folder: ruta de la carpeta templates (Crud-Flask-MySQL\templates)
 app = Flask(__name__, template_folder=template_dir)
-#---------------------------------CONFIGURATIONS---------------------------------#
+# ---------------------------------CONFIGURATIONS---------------------------------#
 
 
-
-
-#---------------------------------ROUTES---------------------------------#
+# ---------------------------------ROUTES---------------------------------#
 # Definimos la ruta principal de la aplicación (Crud-Flask-MySQL\src\templates\index.html)
-@app.route('/')
+@app.route("/")
 
 # Definimos la función home para retornar el archivo index.html
 def home():
-
-
     # Creamos un objeto de la clase database
     conection = db.database.cursor()
 
     # Hacemos una consulta a la base de datos donde nos devolverá todos los registros de la tabla users
     # execute: ejecuta una consulta a la base de datos
-    conection.execute('SELECT * FROM users')
+    conection.execute("SELECT * FROM users")
 
     # fetchall: devuelve todos los registros de la consulta
     # fetchone: devuelve un registro de la consulta
@@ -77,7 +68,6 @@ def home():
 
     # Recorremos los registros y los guardamos en el diccionario
     for row in myresult:
-
         # Usamos append para agregar los datos al diccionario
         # Usamos dict para convertir los datos en un diccionario
         # Usamos zip para unir las columnas con los registros
@@ -85,30 +75,25 @@ def home():
 
     # Cerramos la conexión con la base de datos
     conection.close()
-        
 
     # Retornamos el archivo index.html
     # Le pasamos como parámetro los datos de la base de datos
-    return render_template('home.html', data=objects)
-
-
+    return render_template("home.html", data=objects)
 
 
 # Definimos la ruta para guardar usuarios y le pasamos el metodo POST
-@app.route('/save', methods=['POST'])
+@app.route("/save", methods=["POST"])
 
 # Definimos la función save para guardar los datos del formulario
 def saveData():
-
     # Obtenemos los datos del formulario y los guardamos en variables
-    user_name = request.form['user_name']
-    name = request.form['name']
-    email = request.form['email']
-    pasword = request.form['pasword']
+    user_name = request.form["user_name"]
+    name = request.form["name"]
+    email = request.form["email"]
+    pasword = request.form["pasword"]
 
     # Creamos una condicional para validar que tenemos todos los campos
     if user_name and name and email and pasword:
-
         # Creamos un objeto de la clase database y usamso cursor para poder ejecutar consultas
         guardo = db.database.cursor()
 
@@ -128,17 +113,14 @@ def saveData():
         db.database.commit()
 
     # Retornamos la ruta principal de la aplicación
-    return redirect(url_for('home'))
-
-
+    return redirect(url_for("home"))
 
 
 # Definimos la ruta para eliminar usuarios y le pasamos el metodo GET
-@app.route('/delete/<string:id>')
+@app.route("/delete/<string:id>")
 
 # Definimos la función delete para eliminar los datos de la base de datos
 def deleteData(id):
-
     # Creamos un objeto de la clase database y usamso cursor para poder ejecutar consultas
     eliminar = db.database.cursor()
 
@@ -158,26 +140,22 @@ def deleteData(id):
     db.database.commit()
 
     # Retornamos la ruta principal de la aplicación
-    return redirect(url_for('home'))
-
-
+    return redirect(url_for("home"))
 
 
 # Definimos la ruta para editar usuarios y le pasamos el metodo GET
-@app.route('/edit/<string:id>', methods=['POST'])
+@app.route("/edit/<string:id>", methods=["POST"])
 
 # Definimos la función edit para editar los datos de la base de datos
 def editData(id):
-
     # Obtener los datos del formulario y los guardamos en variables
-    user_name = request.form['user_name']
-    name = request.form['name']
-    email = request.form['email']
-    pasword = request.form['pasword']
+    user_name = request.form["user_name"]
+    name = request.form["name"]
+    email = request.form["email"]
+    pasword = request.form["pasword"]
 
     # Creamos una condicional para validar que tenemos todos los campos
     if user_name and name and email and pasword:
-
         # Creamos un objeto de la clase database y usamso cursor para poder ejecutar consultas
         editar = db.database.cursor()
 
@@ -198,17 +176,16 @@ def editData(id):
         db.database.commit()
 
     # Retornamos la ruta principal de la aplicación
-    return redirect(url_for('home'))
-#---------------------------------ROUTES---------------------------------#
+    return redirect(url_for("home"))
 
 
+# ---------------------------------ROUTES---------------------------------#
 
 
-#---------------------------------RUNNING SERVER---------------------------------#
+# ---------------------------------RUNNING SERVER---------------------------------#
 # Inicializamos la aplicación, pasando como parámetro la instancia de Flask
-if __name__ == '__main__':
-
+if __name__ == "__main__":
     # debug=True para que se reinicie el servidor automáticamente cuando se haga un cambio
     # port: nos permite definir el puerto por el cual se ejecutará la aplicación
     app.run(debug=True, port=4000)
-#---------------------------------RUNNING SERVER---------------------------------#
+# ---------------------------------RUNNING SERVER---------------------------------#

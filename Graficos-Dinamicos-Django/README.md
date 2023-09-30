@@ -1,12 +1,13 @@
 ## Gráficos Dinámicos con Django
+
 ![image](https://github.com/Jhonatan2022/Cruds-Multi-languages/assets/101368711/eb85a832-0bc2-473a-830a-c3917b75b8b7)
 
-
 ## Requisitos
-* python instalado: [python](https://www.python.org/downloads/)
 
+- python instalado: [python](https://www.python.org/downloads/)
 
 ## Pasos a seguir
+
 ```sh
 # Clonar el repositorio
 git clone https://github.com/Jhonatan2022/Cruds-Multi-languages.git
@@ -18,7 +19,7 @@ cd .\Crud-Flask-Mongodb\app\
 ```
 
 ```sh
-# Instalamos virtualenv si no lo tenemos 
+# Instalamos virtualenv si no lo tenemos
 pip install virtualenv
 ```
 
@@ -53,6 +54,7 @@ http://127.0.0.1:8000/
 ```
 
 ## Webs de interés
-* [Bootstrap](https://getbootstrap.com/)
-* [Apache ECharts](https://echarts.apache.org/en/index.html)
-* [Django](https://www.djangoproject.com/)
+
+- [Bootstrap](https://getbootstrap.com/)
+- [Apache ECharts](https://echarts.apache.org/en/index.html)
+- [Django](https://www.djangoproject.com/)
